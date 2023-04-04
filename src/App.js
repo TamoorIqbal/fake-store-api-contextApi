@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
+import "./App.css";
+import Products from "./components/product/Products";
+import ProductDetails from "./components/product/ProductDetails";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import { GlobalContext } from "./context/GlobalState";
+import AddProduct from "./components/product/AddProduct";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Products />} />
+          <Route path="/addProduct" element={<AddProduct />} />
+          <Route path="/productDetails/:id" element={<ProductDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
